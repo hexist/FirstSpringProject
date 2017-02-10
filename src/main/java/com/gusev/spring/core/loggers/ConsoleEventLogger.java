@@ -1,11 +1,12 @@
 package com.gusev.spring.core.loggers;
 
 import com.gusev.spring.core.beans.Event;
+import org.springframework.stereotype.Component;
 
-/**
- * Created by Alexander on 15.12.2016.
- */
+@Component
 public class ConsoleEventLogger implements EventLogger {
+
+    @Override
     public void logEvent(Event event){
          System.out.println(event.toString());
     }

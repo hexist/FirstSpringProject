@@ -1,27 +1,25 @@
 package com.gusev.spring.core;
 
 import com.gusev.spring.core.beans.Client;
-import com.gusev.spring.core.beans.Event;
-import com.gusev.spring.core.loggers.ConsoleEventLogger;
-import org.junit.Assert;
+import com.gusev.spring.core.configs.AppConfig;
 import org.junit.Test;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.List;
 
-/**
- * Created by Alexander on 19.01.2017.
- */
+import static org.junit.Assert.assertEquals;
+
 public class TestContext {
 
     @Test
-    public void testPropertyPlaceholderSystemOverride(){
+    public void testPropertyPlaceholderSystemOverride() {
         System.setProperty("id", "3");
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        Client client = context.getBean(Client.class);
-        context.close();
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        ctx.register(AppConfig.class);
+        ctx.refresh();
 
-        Assert.assertEquals("3", client.getId());
+        Client client = ctx.getBean(Client.class);
+        ctx.close();
+
+        assertEquals("3", client.getId());
     }
 }

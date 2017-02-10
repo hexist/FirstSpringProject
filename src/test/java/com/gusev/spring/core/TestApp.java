@@ -16,9 +16,6 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Alexander on 21.01.2017.
- */
 public class TestApp {
 
     private static final String MSG = "Message";

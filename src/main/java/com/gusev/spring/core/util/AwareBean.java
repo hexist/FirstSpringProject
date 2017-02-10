@@ -1,4 +1,4 @@
-package com.gusev.spring.core;
+package com.gusev.spring.core.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
@@ -6,16 +6,18 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.stereotype.Component;
 
-/**
- * Created by Alexander on 19.01.2017.
- */
+import javax.annotation.PostConstruct;
+
+@Component
 public class AwareBean implements ApplicationContextAware, ApplicationEventPublisherAware, BeanNameAware {
 
     String name;
     ApplicationContext applicationContext;
     ApplicationEventPublisher eventPublisher;
 
+    @PostConstruct
     public void init() {
         System.out.println(this.getClass().getSimpleName() + " --> My name is: " + name);
         if (applicationContext != null) {

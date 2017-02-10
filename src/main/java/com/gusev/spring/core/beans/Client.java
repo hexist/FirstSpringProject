@@ -1,8 +1,5 @@
 package com.gusev.spring.core.beans;
 
-/**
- * Created by Alexander on 15.12.2016.
- */
 public class Client {
 
     private String id;

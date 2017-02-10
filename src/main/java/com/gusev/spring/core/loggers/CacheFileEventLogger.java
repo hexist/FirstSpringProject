@@ -1,22 +1,45 @@
 package com.gusev.spring.core.loggers;
 
 import com.gusev.spring.core.beans.Event;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-import java.util.LinkedList;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+
 import java.util.List;
 
-/**
- * Created by Alexander on 02.01.2017.
- */
+
+@Component
 public class CacheFileEventLogger extends FileEventLogger {
+
+    //System property cache.size or 3 if property is not set
+    @Value("${cache.size:3}")
     int cacheSize;
-    List<Event> cache = new LinkedList<Event>();
+
+    List<Event> cache;
+
+    public CacheFileEventLogger() {
+    }
 
     public CacheFileEventLogger(String filename, int cacheSize){
         super(filename);
         this.cacheSize = cacheSize;
     }
 
+    @PostConstruct
+    public  void initCacheLogger(){
+        this.cache = new ArrayList<Event>(cacheSize);
+    }
+
+    @PreDestroy
+    public void destroy(){
+        if(!cache.isEmpty())
+            writeEventsFromCache();
+    }
+
+    @Override
     public void logEvent(Event event){
         cache.add(event);
 
@@ -30,11 +53,6 @@ public class CacheFileEventLogger extends FileEventLogger {
         for(Event event: cache){
             super.logEvent(event);
         }
-    }
-
-    public void destroy(){
-        if(!cache.isEmpty())
-            writeEventsFromCache();
     }
 }
 

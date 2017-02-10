@@ -15,9 +15,6 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Alexander on 19.01.2017.
- */
 public class TestCacheFileEventLogger {
 
     private File file;
