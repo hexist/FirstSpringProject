@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -19,8 +20,7 @@ public class Event {
     private int id;
     private String msg;
 
-    @Autowired
-    @Qualifier("newDate")
+    @Resource(name = "newDate")
     private Date date;
 
     @Autowired

@@ -1,6 +1,0 @@
-Event{id=2, msg='3 not change', date=11.02.2017}
-Event{id=1, msg='2 not change', date=11.02.2017}
-Event{id=1, msg='2 not change', date=11.02.2017}
-Event{id=3, msg='3 not change', date=11.02.2017}
-Event{id=2, msg='2 not change', date=11.02.2017}
-Event{id=2, msg='2 not change', date=11.02.2017}
