@@ -4,33 +4,21 @@ import com.gusev.spring.core.beans.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Configuration
+@EnableAspectJAutoProxy
 @PropertySource("classpath:client.properties")
 public class AppConfig {
 
     @Autowired
     private Environment environment;
-
-    @Bean
-    public Date newDate() {
-        return new Date();
-    }
-
-    @Bean
-    public Date fakeDate() {
-        return new Date();
-    }
-
-    @Bean
-    public DateFormat dateFormat() {
-        return DateFormat.getDateInstance();
-    }
 
     @Bean
     public Client client(){

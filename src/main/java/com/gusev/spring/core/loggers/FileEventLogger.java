@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 @Component
-public class FileEventLogger implements EventLogger {
+public class FileEventLogger extends AbstractEventLogger {
 
     private File file;
 
@@ -43,5 +43,11 @@ public class FileEventLogger implements EventLogger {
             System.out.println("Something wrong with saving too file");
             e.printStackTrace();
         }
+    }
+
+    @Value("File Event Logger")
+    @Override
+    protected void setName(String name) {
+        this.name = name;
     }
 }

@@ -3,8 +3,10 @@ package com.gusev.spring.core;
 import com.gusev.spring.core.beans.Client;
 import com.gusev.spring.core.beans.Event;
 import com.gusev.spring.core.beans.EventType;
+import com.gusev.spring.core.loggers.AbstractEventLogger;
 import com.gusev.spring.core.loggers.EventLogger;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -85,7 +87,7 @@ public class TestApp {
         method.invoke(app, event, msg, eventType);
     }
 
-    private class FictitiousLogger implements EventLogger{
+    private class FictitiousLogger extends AbstractEventLogger{
         private Event event;
 
         public void setEvent(Event event){
@@ -99,6 +101,12 @@ public class TestApp {
 
         public Event getEvent(){
             return event;
+        }
+
+        @Value("Fictitious Logger")
+        @Override
+        protected void setName(String name) {
+            this.name = name;
         }
     }
 }

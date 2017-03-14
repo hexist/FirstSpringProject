@@ -4,6 +4,7 @@ import com.gusev.spring.core.beans.EventType;
 import com.gusev.spring.core.loggers.*;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
@@ -13,11 +14,14 @@ import java.util.List;
 import java.util.Map;
 
 @Configuration
+@ComponentScan("com.gusev.spring.core.loggers")
 public class LogConfig {
 
     @Bean
     public static PropertyPlaceholderConfigurer propertyConfig(){
-        return new PropertyPlaceholderConfigurer();
+        PropertyPlaceholderConfigurer placeholder = new PropertyPlaceholderConfigurer();
+        placeholder.setSystemPropertiesMode(PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE);
+        return placeholder;
     }
 
     @Resource(name = "consoleEventLogger")
@@ -25,9 +29,6 @@ public class LogConfig {
 
     @Resource(name = "fileEventLogger")
     private EventLogger fileEventLogger;
-
-    @Resource(name = "cacheFileEventLogger")
-    private EventLogger cacheFileEventLogger;
 
     @Resource(name = "combinedEventLogger")
     private EventLogger combinedEventLogger;
@@ -40,11 +41,6 @@ public class LogConfig {
         loggers.add(consoleEventLogger);
         loggers.add(fileEventLogger);
         return loggers;
-    }
-
-    @Bean
-    public EventLogger defaultLogger(){
-        return cacheFileEventLogger;
     }
 
     @Bean
