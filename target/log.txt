@@ -1,3 +1,0 @@
-Event{id=1, msg='63bdfa90-94e9-4918-8989-6d1466d41ba3', date=null}
-Event{id=3, msg='3 not change', date=14.03.2017 22:54:23}
-Event{id=3, msg='3 not change', date=14.03.2017 22:54:23}

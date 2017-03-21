@@ -12,9 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by Alexander on 28.02.2017.
- */
 @Aspect
 @Component
 public class ConsoleLoggerLimitAspect {

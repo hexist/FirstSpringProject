@@ -9,7 +9,6 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 @Component
 @Scope("prototype")
 public class Event {

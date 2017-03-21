@@ -1,15 +1,8 @@
 package com.gusev.spring.core.aspects;
 
-import com.gusev.spring.core.beans.Event;
-import com.gusev.spring.core.loggers.FileEventLogger;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
