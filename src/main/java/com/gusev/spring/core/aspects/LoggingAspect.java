@@ -1,5 +1,6 @@
 package com.gusev.spring.core.aspects;
 
+import com.gusev.spring.core.beans.Event;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;

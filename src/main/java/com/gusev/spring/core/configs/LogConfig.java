@@ -1,5 +1,6 @@
 package com.gusev.spring.core.configs;
 
+import com.gusev.spring.core.beans.Event;
 import com.gusev.spring.core.beans.EventType;
 import com.gusev.spring.core.loggers.*;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Configuration
-@ComponentScan("com.gusev.spring.core.loggers")
+@ComponentScan("com.gusev.spring.core")
 public class LogConfig {
 
     @Bean
@@ -30,16 +31,19 @@ public class LogConfig {
     @Resource(name = "fileEventLogger")
     private EventLogger fileEventLogger;
 
+    @Resource(name = "dataBaseLogger")
+    private EventLogger dbLogger;
+
     @Resource(name = "combinedEventLogger")
     private EventLogger combinedEventLogger;
 
 
-
     @Bean
     public List<EventLogger> combinedLoggers(){
-        List<EventLogger> loggers = new ArrayList<EventLogger>(2);
+        List<EventLogger> loggers = new ArrayList<EventLogger>(3);
         loggers.add(consoleEventLogger);
         loggers.add(fileEventLogger);
+        loggers.add(dbLogger);
         return loggers;
     }
 

@@ -51,7 +51,7 @@ public class CacheFileEventLogger extends FileEventLogger {
     }
 
     public void writeEventsFromCache(){
-        for(Event event: cache) super.logEvent(event);
+        cache.forEach(super::logEvent);
     }
 
     @Value("#{fileEventLogger.name + ' uses cache'}")

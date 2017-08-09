@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.text.DateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
@@ -34,9 +35,19 @@ public class Event {
         this.dateFormat = df;
     }
 
+    public Event(Integer id, Date date, String msg) {
+        this.id = id;
+        this.date = date;
+        this.msg = msg;
+    }
+
     public static boolean isDay(int left, int right) {
         LocalTime currentTime = LocalTime.now();
-        return currentTime.getHour() < right && currentTime.getHour() > left;
+        return currentTime.getHour() < right && currentTime.getHour() >= left;
+    }
+
+    public static void setAutoId(int id){
+        AUTO_ID.set(id);
     }
 
     public int getId() {
@@ -65,4 +76,19 @@ public class Event {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        return id == event.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

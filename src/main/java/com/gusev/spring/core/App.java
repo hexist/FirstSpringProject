@@ -21,7 +21,7 @@ public class App {
     @Autowired
     private Client client;
 
-    @Value("#{T(com.gusev.spring.core.beans.Event).isDay(9, 21)? cacheFileEventLogger : consoleEventLogger}")
+    @Value("#{T(com.gusev.spring.core.beans.Event).isDay(9, 21)? consoleEventLogger : cacheFileEventLogger}")
     private EventLogger defaultLogger;
 
     @Resource(name = "mapLoggers")
@@ -65,13 +65,20 @@ public class App {
                 ", my id is " + client.getId());
 
         Event event = (Event) context.getBean("event");
-        app.logEvent(event, "1 change his id on name", EventType.INFO);
+        app.logEvent(event, "First event for 1", EventType.INFO);
 
         event = context.getBean(Event.class);
-        app.logEvent(event, "2 not change", null);
+        app.logEvent(event, "Some event for 3 client", EventType.ERROR);
 
         event = context.getBean(Event.class);
-        app.logEvent(event, "3 not change", EventType.ERROR);
+        app.logEvent(event, "Some event for 2 client", null);
+
+        event = (Event) context.getBean("event");
+        app.logEvent(event, "Some event for 1", EventType.INFO);
+
+        event = (Event) context.getBean("event");
+        app.logEvent(event, "This one also for 1", EventType.INFO);
+
 
         app.printLogCounter();
 

@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Locale;
 
 @Configuration
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @PropertySource("classpath:client.properties")
 public class AppConfig {
 

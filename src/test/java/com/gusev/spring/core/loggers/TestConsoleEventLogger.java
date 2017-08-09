@@ -5,7 +5,6 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.annotation.Configuration;
 
 import java.io.PrintStream;
 import java.nio.charset.Charset;
@@ -29,7 +28,7 @@ public class TestConsoleEventLogger {
 
 
     @After
-    public void cleanUpSreams(){
+    public void cleanUpStreams(){
         System.setOut(stdout);
     }
 

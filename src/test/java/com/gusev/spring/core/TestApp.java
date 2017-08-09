@@ -14,7 +14,6 @@ import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -68,7 +67,6 @@ public class TestApp {
         invokeLogEvent(app, event, MSG + " " + client.getId(), EventType.ERROR);
         assertNull(infoLogger.getEvent());
         assertNotNull(defaultLogger.getEvent());
-
 
         infoLogger.setEvent(null);
         defaultLogger.setEvent(null);

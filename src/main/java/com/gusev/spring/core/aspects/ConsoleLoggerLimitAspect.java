@@ -20,7 +20,7 @@ public class ConsoleLoggerLimitAspect {
     private EventLogger eventLogger;
 
     @Autowired
-    ConsoleLoggerLimitAspect(@Qualifier("fileEventLogger") EventLogger eventLogger, @Value("${console.limit:2}") int MAX_COUNT) {
+    ConsoleLoggerLimitAspect(@Qualifier("fileEventLogger") EventLogger eventLogger, @Value("${console.limit:3}") int MAX_COUNT) {
         this.eventLogger = eventLogger;
         this.MAX_COUNT = MAX_COUNT;
     }
@@ -37,7 +37,7 @@ public class ConsoleLoggerLimitAspect {
             joinPoint.proceed(new Object[]{event});
             count++;
         } else {
-            System.out.println("ConsoleEventLogger max count is reached. Logging to " + eventLogger.getName());
+            System.out.println("ConsoleEventLogger max count is reached. Logging event with id: " + event.getId() +" to " + eventLogger.getName());
             eventLogger.logEvent(event);
         }
     }

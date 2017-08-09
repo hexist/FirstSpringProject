@@ -5,7 +5,6 @@ import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import sun.plugin2.message.EventMessage;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +33,7 @@ public class TestCacheFileEventLogger {
         Event event = new Event(new Date(), DateFormat.getDateInstance());
         CacheFileEventLogger cacheFileEventLogger = new CacheFileEventLogger(file.getAbsolutePath(), 2);
         cacheFileEventLogger.init();
+        cacheFileEventLogger.initCacheLogger();
 
         String content = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertTrue("File is empty after initialization", content.isEmpty());
@@ -54,6 +54,7 @@ public class TestCacheFileEventLogger {
         Event event = new Event(new Date(), DateFormat.getDateInstance());
         CacheFileEventLogger cacheFileEventLogger = new CacheFileEventLogger(file.getAbsolutePath(), 2);
         cacheFileEventLogger.init();
+        cacheFileEventLogger.initCacheLogger();
 
         String content = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertTrue("File is empty after initialization", content.isEmpty());

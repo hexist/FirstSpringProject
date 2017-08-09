@@ -15,6 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.8.9</aspectj.version>
         <mockito.version>2.7.12</mockito.version>
+        <postgresql.version>9.1-901-1.jdbc4</postgresql.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,11 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
 
